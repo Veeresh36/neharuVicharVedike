@@ -8,7 +8,25 @@
   <link href="/admin/config.yml" rel="cms-config-url" />
 </head>
 <body>
-  <!-- Decap CMS (formerly Netlify CMS) — GitHub backend, works on any host including Vercel -->
+  <!-- Netlify Identity: gives a plain email + password login, no GitHub mention -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      // IMPORTANT: replace YOUR-NETLIFY-SITE with your actual Netlify project domain
+      window.netlifyIdentity.init({
+        APIUrl: "https://YOUR-NETLIFY-SITE.netlify.app/.netlify/identity"
+      });
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+  <!-- Decap CMS (formerly Netlify CMS) — Git Gateway backend, plain email/password login -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
