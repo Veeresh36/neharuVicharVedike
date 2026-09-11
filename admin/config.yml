@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main   # change this if your default GitHub branch is called "master"
+
+# Where uploaded images get saved in the repo, and the path used on the live site.
+# "" and "/" mean: save straight into the repo root, same place as about.png, seminars.png, etc.
+media_folder: ""
+public_folder: "/"
+
+# Decap CMS requires at least one collection to load. This one gives you a simple
+# form to edit your contact details without touching HTML — plus it unlocks the
+# "Media" tab in the top nav, which is what you'll actually use to upload/replace images.
+collections:
+  - name: "site_info"
+    label: "Site Info"
+    files:
+      - file: "site-info.json"
+        label: "Contact & Basic Info"
+        name: "site_info"
+        fields:
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }

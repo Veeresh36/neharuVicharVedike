@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ | Neharu Vichar Vedike</title>
+<meta name="description" content="Neharu Vichar Vedike — a platform for ideas, knowledge, democracy, equality and scientific temper, encouraging youth participation and constructive public dialogue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#122f60;
+    --navy-dark:#0b1f42;
+    --cream:#faf7f0;
+    --saffron:#e07a2b;
+    --saffron-dark:#c4611a;
+    --green:#0f7a4a;
+    --gold:#c79a3f;
+    --ink:#1c2430;
+    --line:#e3ddcf;
+    --white:#ffffff;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:88px;}
+  body{
+    margin:0;
+    font-family:'Source Sans 3', 'Noto Sans Kannada', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{
+    font-family:'Merriweather','Noto Sans Kannada',serif;
+    margin:0 0 .4em;
+    line-height:1.25;
+    color:var(--navy-dark);
+  }
+  .kn{font-family:'Noto Sans Kannada','Merriweather',serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  button{font-family:inherit;cursor:pointer;}
+  :focus-visible{outline:3px solid var(--saffron);outline-offset:2px;}
+
+  /* ---------- Topbar ---------- */
+  .topbar{background:var(--navy-dark);color:#cfd9ec;font-size:.8rem;}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:6px 24px;flex-wrap:wrap;gap:6px;}
+  .topbar .lang span{opacity:.6;margin:0 6px;}
+  .topbar .lang button{background:none;border:0;color:inherit;font-size:.8rem;padding:2px 4px;}
+  .topbar .lang button.active{color:var(--white);font-weight:700;}
+  .topbar .social a{margin-left:12px;opacity:.85;font-size:.9rem;}
+
+  /* ---------- Header ---------- */
+  header.site{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+  .site-header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1180px;margin:0 auto;gap:20px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand .mark{width:52px;height:52px;border-radius:50%;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:1.3rem;flex-shrink:0;}
+  .brand .names .kn-name{color:var(--navy);font-weight:700;font-size:1.05rem;}
+  .brand .names .en-name{color:var(--saffron-dark);font-weight:700;font-size:.72rem;letter-spacing:.05em;}
+  nav.main{display:flex;gap:22px;flex-wrap:wrap;}
+  nav.main a{font-size:.88rem;font-weight:600;color:var(--navy-dark);padding:4px 0;border-bottom:2px solid transparent;}
+  nav.main a:hover, nav.main a.active{border-color:var(--saffron);}
+  nav.main a .kn{display:block;font-size:.76rem;}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:var(--radius);padding:8px 10px;font-size:1.1rem;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    color:var(--white);
+    overflow:hidden;
+    background-color:var(--navy);
+    aspect-ratio:21/9;
+    min-height:480px;
+    display:flex;
+    align-items:center;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background-image:url('header_img.png');
+    background-size:cover;
+    background-position:center 22%;
+    background-repeat:no-repeat;
+    filter:saturate(1.4) brightness(1.12) contrast(1.05);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(ellipse 62% 72% at 50% 54%, rgba(6,14,32,.62) 0%, rgba(6,14,32,.38) 42%, rgba(6,14,32,.08) 68%, transparent 82%),
+      linear-gradient(155deg,
+        rgba(224,122,43,.40) 0%,
+        rgba(199,154,63,.24) 30%,
+        rgba(11,31,66,.32) 55%,
+        rgba(15,122,74,.36) 100%);
+  }
+  .hero-inner{
+    max-width:800px;margin:0 auto;padding:56px 24px;position:relative;z-index:2;width:100%;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .hero .kn-tag, .hero h1, .hero .sub, .hero .quote{position:relative;z-index:2;}
+
+  .hero-strip{height:6px;width:100%;background:linear-gradient(90deg,var(--saffron) 0 33%, var(--white) 33% 66%, var(--green) 66% 100%);}
+  .hero h1{color:#fff8ee;font-size:2.5rem;margin-bottom:.15em;text-shadow:0 2px 6px rgba(0,0,0,.75), 0 10px 30px rgba(0,0,0,.55);}
+  .hero .kn-tag{font-family:'Noto Sans Kannada',serif;font-weight:700;font-size:1.9rem;color:#ffcf7d;text-shadow:0 2px 6px rgba(0,0,0,.7), 0 8px 24px rgba(0,0,0,.5);}
+  .hero .sub{font-size:1.05rem;color:#fdeedb;margin:14px auto 22px;max-width:52ch;text-shadow:0 2px 8px rgba(0,0,0,.7), 0 6px 18px rgba(0,0,0,.5);}
+  .hero .quote{font-style:italic;color:#ffe4b8;border-left:3px solid var(--saffron);padding-left:14px;margin:0 auto 26px;text-align:left;display:inline-block;text-shadow:0 2px 6px rgba(0,0,0,.7);}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .btn{display:inline-block;padding:12px 24px;border-radius:var(--radius);font-weight:700;font-size:.92rem;border:2px solid transparent;transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--saffron);color:var(--white);}
+  .btn-primary:hover{background:var(--saffron-dark);}
+  .btn-outline{background:var(--white);border-color:var(--white);color:var(--navy);}
+  .btn-outline:hover{background:transparent;color:var(--white);}
+
+  /* ---------- Section shell ---------- */
+  section{padding:64px 0;scroll-margin-top:88px;}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px;flex-wrap:wrap;}
+  .section-head .num{width:34px;height:2px;background:var(--saffron);display:inline-block;transform:translateY(-6px);}
+  .section-head h2{font-size:1.7rem;}
+  .section-head .kn{color:var(--saffron-dark);font-size:1.15rem;}
+  .section-head .kn::before{content:"| ";color:var(--line);}
+  .section-alt{background:var(--white);}
+
+  /* ---------- About (premium) ---------- */
+  #about{position:relative;overflow:hidden;}
+  #about::before{
+    content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;
+    background:radial-gradient(circle,rgba(224,122,43,.10),transparent 70%);
+    pointer-events:none;
+  }
+  .about-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron-dark);margin-bottom:14px;}
+  .about-eyebrow::before{content:"";width:22px;height:2px;background:var(--saffron);display:inline-block;}
+  .about-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+    position:relative;
+  }
+  .about-grid p{margin:0 0 14px;color:#3b4657;}
+  .about-grid .about-text{padding-right:8px;}
+  .about-grid .about-text p:first-of-type{
+    font-size:1.06rem;color:var(--navy-dark);font-weight:500;
+    padding-left:16px;border-left:3px solid var(--gold);
+  }
+  .about-facts{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:var(--radius);
+    margin:26px 0 30px;overflow:hidden;
+  }
+  .about-facts .fact{background:var(--white);padding:16px 14px;text-align:center;}
+  .about-facts .fact .n{display:block;font-family:'Merriweather',serif;font-weight:900;font-size:1.4rem;color:var(--navy);}
+  .about-facts .fact .l{display:block;font-size:.72rem;color:#6a7488;margin-top:2px;letter-spacing:.02em;}
+  .about-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .about-cta .btn-primary{background:var(--navy);box-shadow:0 10px 24px -10px rgba(18,47,96,.55);}
+  .about-cta .btn-primary:hover{background:var(--navy-dark);}
+  .about-cta .signature{font-style:italic;color:#8a93a8;font-size:.85rem;}
+
+  .about-img-wrap{position:relative;}
+  .about-img-wrap::before{
+    content:"";position:absolute;top:24px;left:-24px;right:24px;bottom:-24px;
+    border:1.5px solid var(--gold);border-radius:var(--radius);z-index:0;
+  }
+  .about-img-wrap .frame{
+    position:relative;z-index:1;border-radius:var(--radius);overflow:hidden;
+    box-shadow:0 30px 60px -24px rgba(11,31,66,.45);
+    aspect-ratio:5/4;
+  }
+  .about-img-wrap .frame img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .about-img-wrap .badge{
+    position:absolute;z-index:2;left:-28px;bottom:-22px;
+    background:var(--navy);color:#fff;border-radius:var(--radius);
+    padding:16px 20px;box-shadow:0 16px 34px -14px rgba(11,31,66,.6);
+    max-width:230px;
+  }
+  .about-img-wrap .badge .kn{display:block;font-weight:700;font-size:.98rem;color:#ffd9ad;margin-bottom:2px;}
+  .about-img-wrap .badge .en{display:block;font-size:.76rem;color:#dfe6f6;}
+
+  /* ---------- Vision banner ---------- */
+  .vision{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+  .vision::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(224,122,43,.18),transparent 55%);}
+  .vision .wrap{position:relative;text-align:center;max-width:760px;}
+  .vision .lead-kn{font-family:'Noto Sans Kannada',serif;font-weight:700;font-size:1.5rem;color:#ffd9ad;margin-bottom:10px;}
+  .vision .lead-en{font-family:'Merriweather',serif;font-style:italic;font-size:1.25rem;color:#fff;margin-bottom:22px;}
+  .vision p{color:#d8e0f2;margin:0 0 8px;}
+
+  /* ---------- Mission ---------- */
+  .mission-list{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;list-style:none;margin:0;padding:0;}
+  .mission-list li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);}
+  .mission-list li .bullet{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--saffron);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;margin-top:2px;}
+  .mission-list li .txt .kn{display:block;font-weight:600;color:var(--navy-dark);}
+  .mission-list li .txt .en{display:block;font-size:.86rem;color:#5a6577;}
+
+  /* ---------- Values ---------- */
+  .values-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .value-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px;text-align:center;}
+  .value-card .icon{width:56px;height:56px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--white);}
+  .value-card h3{font-size:1rem;margin-bottom:2px;}
+  .value-card .kn{display:block;font-size:.98rem;color:var(--saffron-dark);margin-bottom:8px;}
+  .value-card p{font-size:.85rem;color:#5a6577;margin:0;}
+
+  /* ---------- Activities ---------- */
+  .activities-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  .activity-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .activity-card img{aspect-ratio:4/3;object-fit:cover;width:100%;}
+  .activity-card .cap{padding:12px 14px;}
+  .activity-card .cap .kn{display:block;font-weight:700;color:var(--navy);}
+  .activity-card .cap .en{font-size:.8rem;color:var(--saffron-dark);}
+
+  /* ---------- Youth ---------- */
+  .youth{background:linear-gradient(135deg,var(--saffron) 0%,var(--saffron-dark) 100%);color:#fff;}
+  .youth-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+  .youth h2, .youth .section-head h2{color:#fff;}
+  .youth .section-head .kn{color:#fff2e2;}
+  .youth .section-head .num{background:#fff;}
+  .youth p{color:#fff2e2;}
+  .youth .stat-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:var(--radius);padding:22px;text-align:center;}
+  .youth .stat-card .n{font-family:'Merriweather',serif;font-size:2.1rem;font-weight:900;display:block;}
+  .youth .stat-card .l{font-size:.82rem;color:#fff2e2;}
+  .youth .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+  /* ---------- Quotes ---------- */
+  .quotes{background:var(--navy-dark);color:var(--white);}
+  .quotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .quotes-grid .quote-card:nth-child(4){grid-column:1 / span 1;}
+  .quote-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:24px;}
+  .quote-card .kn{color:#ffd9ad;font-weight:700;display:block;margin-bottom:10px;}
+  .quote-card .en{font-size:.88rem;font-style:italic;color:#c8d3ea;}
+
+  /* ---------- Events ---------- */
+  .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .event-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .event-card .img-wrap{position:relative;}
+  .event-card img{aspect-ratio:16/10;object-fit:cover;width:100%;}
+  .event-date{position:absolute;top:12px;left:12px;background:var(--saffron);color:var(--white);border-radius:var(--radius);padding:6px 10px;text-align:center;font-weight:700;line-height:1.1;}
+  .event-date .d{font-size:1.2rem;display:block;}
+  .event-date .m{font-size:.65rem;letter-spacing:.05em;}
+  .event-card .body{padding:16px;}
+  .event-card .kn{display:block;font-weight:700;color:var(--navy);margin-bottom:2px;}
+  .event-card .en{font-size:.85rem;color:var(--saffron-dark);margin-bottom:10px;display:block;}
+  .event-card .meta{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#667;}
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .gallery-grid figure{margin:0;position:relative;border-radius:var(--radius);overflow:hidden;background:#122f60;}
+  .gallery-grid img{aspect-ratio:1/1;object-fit:cover;width:100%;transition:transform .3s ease;}
+  .gallery-grid figure:hover img{transform:scale(1.05);}
+  .gallery-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:linear-gradient(0deg,rgba(11,31,66,.85),transparent);color:#fff;font-size:.78rem;font-weight:600;}
+
+  /* ---------- Posts / News (static) ---------- */
+  .posts-toolbar{margin-bottom:30px;}
+  .posts-toolbar .hint{font-size:.86rem;color:#667;max-width:60ch;}
+  .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .post-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;}
+  .post-card img{aspect-ratio:16/10;object-fit:cover;width:100%;background:#dfe6f2;}
+  .post-card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .post-card .cat{font-size:.72rem;font-weight:700;color:var(--saffron-dark);letter-spacing:.03em;}
+  .post-card h3{font-size:1.05rem;margin:0;}
+  .post-card .excerpt{font-size:.87rem;color:#4a5468;flex:1;}
+  .post-card .foot{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:#78829a;margin-top:6px;}
+
+  /* ---------- Join / Contact ---------- */
+  .join{position:relative;background:var(--navy);color:var(--white);}
+  .join-inner{padding:60px 0;text-align:center;}
+  .join p{max-width:52ch;margin:10px auto 24px;color:#d8e0f2;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  .contact-info li{display:flex;gap:10px;margin-bottom:14px;color:#3b4657;font-size:.94rem;}
+  .contact-info .ico{width:20px;flex-shrink:0;}
+
+  footer.site{background:var(--navy-dark);color:#aebbd8;padding:36px 0 20px;}
+  footer.site .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:22px;margin-bottom:16px;}
+  footer.site nav a{margin-right:18px;font-size:.87rem;}
+  footer.site .tagline{font-size:.85rem;font-style:italic;color:#9fb0d4;margin-top:4px;}
+  footer.site .fine{font-size:.78rem;text-align:center;color:#7c88a6;}
+
+  @media (max-width:960px){
+    nav.main{position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--line);display:none;}
+    nav.main.open{display:flex;}
+    nav.main a{padding:10px 24px;border-bottom:1px solid var(--line);}
+    .nav-toggle{display:block;}
+    .hero{aspect-ratio:4/5;min-height:560px;background-position:30% 15%;}
+    .about-grid{grid-template-columns:1fr;gap:64px 0;}
+    .about-grid .about-text{padding-right:0;}
+    .about-img-wrap{margin-top:12px;}
+    .about-img-wrap::before{left:12px;right:-12px;top:16px;bottom:-16px;}
+    .about-img-wrap .badge{left:16px;bottom:-18px;max-width:calc(100% - 32px);}
+    .mission-list{grid-template-columns:1fr;}
+    .values-grid{grid-template-columns:repeat(2,1fr);}
+    .activities-grid{grid-template-columns:repeat(2,1fr);}
+    .youth-grid{grid-template-columns:1fr;}
+    .quotes-grid{grid-template-columns:1fr;}
+    .quotes-grid .quote-card:nth-child(4){grid-column:auto;}
+    .events-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .posts-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="lang">
+      <button class="active" type="button">ಕನ್ನಡ</button><span>|</span><button type="button">English</button>
+    </div>
+    <div class="social" aria-hidden="true">FB &nbsp;IG &nbsp;YT &nbsp;X &nbsp;IN</div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="site-header-inner">
+    <a href="#home" class="brand">
+      <div class="mark">ನೆ</div>
+      <div class="names">
+        <div class="kn-name kn">ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ</div>
+        <div class="en-name">NEHARU VICHAR VEDIKE</div>
+      </div>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    <nav class="main" id="mainNav">
+      <a href="#home" class="active">Home<span class="kn">ಮುಖಪುಟ</span></a>
+      <a href="#about">About<span class="kn">ನಮ್ಮ ಬಗ್ಗೆ</span></a>
+      <a href="#mission">Mission<span class="kn">ಧ್ಯೇಯ</span></a>
+      <a href="#activities">Activities<span class="kn">ಚಟುವಟಿಕೆಗಳು</span></a>
+      <a href="#youth">Youth<span class="kn">ಯುವಶಕ್ತಿ</span></a>
+      <a href="#events">Events<span class="kn">ಕಾರ್ಯಕ್ರಮಗಳು</span></a>
+      <a href="#gallery">Gallery<span class="kn">ಚಿತ್ರಶಾಲೆ</span></a>
+      <a href="#posts">Posts<span class="kn">ಪೋಸ್ಟ್‌ಗಳು</span></a>
+      <a href="#join">Join Us<span class="kn">ಸೇರಿ</span></a>
+      <a href="#contact">Contact<span class="kn">ಸಂಪರ್ಕಿಸಿ</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero-strip"></div>
+<section id="home" class="hero" style="padding:0;">
+  <div class="hero-inner">
+    <div>
+      <div class="kn-tag kn">ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ</div>
+      <h1>Neharu Vichar Vedike</h1>
+      <p class="sub kn">ವಿಚಾರ · ಜ್ಞಾನ · ಸಮಾನತೆ · ಪ್ರಜಾಪ್ರಭುತ್ವ</p>
+      <p class="sub">Think &middot; Learn &middot; Question &middot; Participate &middot; Transform</p>
+      <p class="quote kn">"ವಿಚಾರದಿಂದ ಬೆಳಕು — ಬೆಳಕಿನಿಂದ ಬದಲಾವಣೆ."<br><span style="font-size:.85rem;color:#e8cf9f;">From Thought to Light — From Light to Change.</span></p>
+      <div class="cta-row">
+        <a href="#about" class="btn btn-primary kn">ನಮ್ಮ ಬಗ್ಗೆ ತಿಳಿದುಕೊಳ್ಳಿ</a>
+        <a href="#join" class="btn btn-outline kn">ನಮ್ಮೊಂದಿಗೆ ಸೇರಿ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section-alt">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>About Us</h2><span class="kn">ನಮ್ಮ ಬಗ್ಗೆ</span></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="about-eyebrow kn">ವಿಚಾರ ವೇದಿಕೆಯ ಪರಿಚಯ</span>
+        <p class="kn">ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ ಸಮಾಜದಲ್ಲಿ ವಿಚಾರ, ಜ್ಞಾನ ಮತ್ತು ಸಾರ್ವಜನಿಕ ಸಂವಾದದ ಸಂಸ್ಕೃತಿಯನ್ನು ಬೆಳೆಸುವ ವೇದಿಕೆಯಾಗಿದೆ. ಸಮಾಜದ ಪ್ರಗತಿಗೆ ಕೇವಲ ಆರ್ಥಿಕ ಅಭಿವೃದ್ಧಿಯಷ್ಟೇ ಸಾಕಾಗುವುದಿಲ್ಲ; ಜ್ಞಾನ, ಸಮಾನ ಅವಕಾಶ, ವೈಜ್ಞಾನಿಕ ಮನೋಭಾವ, ಸಾಮಾಜಿಕ ಹೊಣೆಗಾರಿಕೆ ಮತ್ತು ಪ್ರಜಾಪ್ರಭುತ್ವದ ಮೌಲ್ಯಗಳೂ ಅಗತ್ಯ.</p>
+        <p>Neharu Vichar Vedike is a platform that seeks to nurture a culture of ideas, knowledge and meaningful public dialogue. We believe social progress needs more than economic development — it needs knowledge, equal opportunity, scientific temper, social responsibility and strong democratic values.</p>
+        <p class="kn">ಈ ಮೌಲ್ಯಗಳ ಕುರಿತು ಜನರಲ್ಲಿ ಅರಿವು ಮೂಡಿಸುವುದು ಹಾಗೂ ವಿಶೇಷವಾಗಿ ಯುವಜನತೆಯನ್ನು ಸಕಾರಾತ್ಮಕ ಸಾಮಾಜಿಕ ಚಿಂತನೆಯೊಂದಿಗೆ ಸಂಪರ್ಕಿಸುವುದು ನಮ್ಮ ಉದ್ದೇಶ.</p>
+
+        <div class="about-facts">
+          <div class="fact"><span class="n">200+</span><span class="l kn">ಯುವ ಭಾಗಿದಾರರು</span></div>
+          <div class="fact"><span class="n">7</span><span class="l kn">ಧ್ಯೇಯ ಕ್ಷೇತ್ರಗಳು</span></div>
+          <div class="fact"><span class="n">5</span><span class="l kn">ಮೂಲ ಮೌಲ್ಯಗಳು</span></div>
+        </div>
+
+        <div class="about-cta">
+          <a href="#mission" class="btn btn-primary">Our Mission &rarr;</a>
+          <span class="signature kn">"ವಿಚಾರದಿಂದ ಬೆಳಕು."</span>
+        </div>
+      </div>
+      <div class="about-img-wrap">
+        <div class="frame">
+          <img src="about.png" alt="Neharu Vichar Vedike community gathering">
+        </div>
+        <div class="badge">
+          <span class="kn">ಸಮುದಾಯ ಒಗ್ಗಟ್ಟು</span>
+          <span class="en">Rooted in community, driven by ideas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vision">
+  <div class="wrap">
+    <div class="lead-kn kn">"ಜ್ಞಾನದಿಂದ ಜಾಗೃತಿ — ಜಾಗೃತಿಯಿಂದ ಪ್ರಗತಿ"</div>
+    <div class="lead-en">"Knowledge creates awareness; awareness creates progress."</div>
+    <p class="kn">ನ್ಯಾಯಯುತ, ಸಮಾನತೆಯ, ವೈಜ್ಞಾನಿಕ ಮನೋಭಾವ ಹೊಂದಿರುವ ಮತ್ತು ಪ್ರಜಾಪ್ರಭುತ್ವದ ಮೌಲ್ಯಗಳನ್ನು ಗೌರವಿಸುವ ಸಮಾಜವನ್ನು ನಿರ್ಮಿಸುವ ಚಿಂತನೆಗೆ ವೇದಿಕೆಯಾಗುವುದು — ಇದು ನಮ್ಮ ದೃಷ್ಟಿಕೋನ.</p>
+    <p>Our vision is to contribute to a society that values equality, justice, scientific thinking, democratic participation and responsible citizenship.</p>
+  </div>
+</section>
+
+<section id="mission">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Our Mission</h2><span class="kn">ನಮ್ಮ ಧ್ಯೇಯ</span></div>
+    <ul class="mission-list">
+      <li><span class="bullet">1</span><span class="txt"><span class="kn">ಯುವಜನರಲ್ಲಿ ಸಾಮಾಜಿಕ ಮತ್ತು ಪ್ರಜಾಪ್ರಭುತ್ವದ ಅರಿವು ಬೆಳೆಸುವುದು</span><span class="en">Encourage democratic and social awareness among young people</span></span></li>
+      <li><span class="bullet">2</span><span class="txt"><span class="kn">ಜ್ಞಾನ ಮತ್ತು ವಿಚಾರ ವಿನಿಮಯಕ್ಕೆ ವೇದಿಕೆ ಕಲ್ಪಿಸುವುದು</span><span class="en">Create platforms for knowledge sharing and meaningful dialogue</span></span></li>
+      <li><span class="bullet">3</span><span class="txt"><span class="kn">ವೈಜ್ಞಾನಿಕ ಮನೋಭಾವವನ್ನು ಉತ್ತೇಜಿಸುವುದು</span><span class="en">Promote scientific temper and rational thinking</span></span></li>
+      <li><span class="bullet">4</span><span class="txt"><span class="kn">ಸಮಾನತೆ ಮತ್ತು ಸಾಮಾಜಿಕ ನ್ಯಾಯದ ಮೌಲ್ಯಗಳನ್ನು ಬೆಂಬಲಿಸುವುದು</span><span class="en">Support the values of equality and social justice</span></span></li>
+      <li><span class="bullet">5</span><span class="txt"><span class="kn">ಸಾರ್ವಜನಿಕ ವಿಚಾರಗಳ ಕುರಿತು ಆರೋಗ್ಯಕರ ಚರ್ಚೆಗಳನ್ನು ಉತ್ತೇಜಿಸುವುದು</span><span class="en">Encourage healthy discussions on public issues</span></span></li>
+      <li><span class="bullet">6</span><span class="txt"><span class="kn">ಸಮಾಜದ ವಿವಿಧ ವರ್ಗಗಳ ನಡುವೆ ಸಂವಾದ ಮತ್ತು ಸಹಕಾರವನ್ನು ಬೆಳೆಸುವುದು</span><span class="en">Build dialogue and cooperation across communities</span></span></li>
+      <li><span class="bullet">7</span><span class="txt"><span class="kn">ಯುವಶಕ್ತಿಯನ್ನು ಸಕಾರಾತ್ಮಕ ಸಾಮಾಜಿಕ ಚಟುವಟಿಕೆಗಳತ್ತ ಪ್ರೇರೇಪಿಸುವುದು</span><span class="en">Inspire youth towards constructive social participation</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="values" class="section-alt">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Our Values</h2><span class="kn">ನಮ್ಮ ಮೌಲ್ಯಗಳು</span></div>
+    <div class="values-grid">
+      <div class="value-card"><div class="icon" style="background:#1a5bb8;">&#9776;</div><h3>Democracy</h3><span class="kn">ಪ್ರಜಾಪ್ರಭುತ್ವ</span><p>Respecting the right to think, question and participate.</p></div>
+      <div class="value-card"><div class="icon" style="background:#c78a12;">&#9878;</div><h3>Equality</h3><span class="kn">ಸಮಾನತೆ</span><p>Dignity and equal opportunity for everyone.</p></div>
+      <div class="value-card"><div class="icon" style="background:#a53d3d;">&#128214;</div><h3>Knowledge</h3><span class="kn">ಜ್ಞಾನ</span><p>Informed thinking based on facts and learning.</p></div>
+      <div class="value-card"><div class="icon" style="background:#0f7a4a;">&#9883;</div><h3>Scientific Temper</h3><span class="kn">ವೈಜ್ಞಾನಿಕ ಮನೋಭಾವ</span><p>Questioning, examining and evidence-based thinking.</p></div>
+      <div class="value-card"><div class="icon" style="background:#6a3fa0;">&#129309;</div><h3>Social Responsibility</h3><span class="kn">ಸಾಮಾಜಿಕ ಹೊಣೆಗಾರಿಕೆ</span><p>Recognising our responsibility towards society's wellbeing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Our Activities</h2><span class="kn">ನಮ್ಮ ಚಟುವಟಿಕೆಗಳು</span></div>
+    <div class="activities-grid">
+      <div class="activity-card"><img src="seminars.png" alt="Seminars and discussions"><div class="cap"><span class="kn">ವಿಚಾರ ಸಂಕಿರಣಗಳು</span><span class="en">Seminars &amp; Discussions</span></div></div>
+      <div class="activity-card"><img src="youth dailogues.png" alt="Youth dialogues"><div class="cap"><span class="kn">ಯುವ ಸಂವಾದ</span><span class="en">Youth Dialogues</span></div></div>
+      <div class="activity-card"><img src="awerness.png" alt="Public awareness programme"><div class="cap"><span class="kn">ಸಾರ್ವಜನಿಕ ಜಾಗೃತಿ</span><span class="en">Public Awareness Programmes</span></div></div>
+      <div class="activity-card"><img src="education.png" alt="Educational programme"><div class="cap"><span class="kn">ಶೈಕ್ಷಣಿಕ ಕಾರ್ಯಕ್ರಮಗಳು</span><span class="en">Educational Programmes</span></div></div>
+      <div class="activity-card"><img src="culture.png" alt="Cultural and social programme"><div class="cap"><span class="kn">ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳು</span><span class="en">Cultural &amp; Social Programmes</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="youth" class="youth">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Youth — The Power of Tomorrow</h2><span class="kn">ಯುವಶಕ್ತಿ</span></div>
+    <div class="youth-grid">
+      <div>
+        <p class="kn">ಯುವಜನರು ಕೇವಲ ಭವಿಷ್ಯದ ನಾಯಕರು ಅಲ್ಲ; ಅವರು ಇಂದಿನ ಸಮಾಜದ ಪ್ರಮುಖ ಶಕ್ತಿ. ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ ಯುವಜನರಿಗೆ ಪ್ರಶ್ನಿಸಲು, ಕಲಿಯಲು, ಚರ್ಚಿಸಲು ಮತ್ತು ಸಮಾಜದಲ್ಲಿ ಸಕಾರಾತ್ಮಕವಾಗಿ ಭಾಗವಹಿಸಲು ಅವಕಾಶ ಕಲ್ಪಿಸುವ ಉದ್ದೇಶ ಹೊಂದಿದೆ.</p>
+        <p>Young people are not only the leaders of tomorrow — they are an important force shaping society today. Neharu Vichar Vedike gives young people room to learn, question, discuss and participate constructively.</p>
+        <a href="#join" class="btn btn-outline">Join a Youth Dialogue &rarr;</a>
+      </div>
+      <div class="stats">
+        <div class="stat-card"><span class="n">200+</span><span class="l">Youth reached in dialogues</span></div>
+        <div class="stat-card"><span class="n">3</span><span class="l">Colleges engaged so far</span></div>
+        <div class="stat-card"><span class="n">7</span><span class="l">Core mission focus areas</span></div>
+        <div class="stat-card"><span class="n">5</span><span class="l">Guiding values</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quotes">
+  <div class="wrap">
+    <div class="section-head" style="color:#fff;"><span class="num"></span><h2 style="color:#fff;">Inspiring Quotes</h2><span class="kn" style="color:#ffd9ad;">ವಿಚಾರ ಮುತ್ತುಗಳು</span></div>
+    <div class="quotes-grid">
+      <div class="quote-card"><span class="kn">"ವಿಚಾರಿಸುವ ಮನಸ್ಸು ಬದಲಾವಣೆಯ ಮೊದಲ ಹೆಜ್ಜೆ."</span><span class="en">A questioning mind is the first step towards change.</span></div>
+      <div class="quote-card"><span class="kn">"ಜ್ಞಾನದಿಂದ ಜಾಗೃತಿ, ಜಾಗೃತಿಯಿಂದ ಪ್ರಗತಿ."</span><span class="en">Knowledge creates awareness; awareness creates progress.</span></div>
+      <div class="quote-card"><span class="kn">"ಪ್ರಜಾಪ್ರಭುತ್ವವು ಕೇವಲ ಮತದಾನದ ಹಕ್ಕಲ್ಲ; ಅದು ವಿಚಾರಿಸುವ ಜವಾಬ್ದಾರಿಯೂ ಹೌದು."</span><span class="en">Democracy is not merely the right to vote; it is also the responsibility to think.</span></div>
+      <div class="quote-card"><span class="kn">"ಯುವಶಕ್ತಿ ಮತ್ತು ವಿಚಾರಶಕ್ತಿ ಒಂದಾದಾಗ ಸಮಾಜದ ಭವಿಷ್ಯ ಬದಲಾಗುತ್ತದೆ."</span><span class="en">When youth power and intellectual thought come together, the future of society can change.</span></div>
+      <div class="quote-card"><span class="kn">"ಒಳ್ಳೆಯ ಸಮಾಜವು ಒಳ್ಳೆಯ ವಿಚಾರಗಳಿಂದ ನಿರ್ಮಾಣವಾಗುತ್ತದೆ."</span><span class="en">A better society begins with better ideas.</span></div>
+      <div class="quote-card"><span class="kn">"ಪ್ರಶ್ನಿಸುವುದು ವಿರೋಧವಲ್ಲ; ಅದು ಪ್ರಗತಿಯ ಆರಂಭ."</span><span class="en">Questioning is not opposition; it is the beginning of progress.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="events" class="section-alt">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Our Events</h2><span class="kn">ಕಾರ್ಯಕ್ರಮಗಳು</span></div>
+    <div class="events-grid">
+      <div class="event-card"><div class="img-wrap"><img src="youth dailogues.png" alt="Youth dialogue event"><div class="event-date"><span class="d">15</span><span class="m">MAR</span></div></div><div class="body"><span class="kn">ಯುವ ಸಂವಾದ</span><span class="en">Youth Dialogue</span><div class="meta"><span>Bengaluru</span><a href="#">Know More &rarr;</a></div></div></div>
+      <div class="event-card"><div class="img-wrap"><img src="seminars.png" alt="Seminar on democracy and youth"><div class="event-date"><span class="d">22</span><span class="m">APR</span></div></div><div class="body"><span class="kn">ವಿಚಾರ ಸಂಕಿರಣ</span><span class="en">Seminar on Democracy &amp; Youth</span><div class="meta"><span>Bengaluru</span><a href="#">Know More &rarr;</a></div></div></div>
+      <div class="event-card"><div class="img-wrap"><img src="community.png" alt="Community initiative"><div class="event-date"><span class="d">05</span><span class="m">MAY</span></div></div><div class="body"><span class="kn">ಸಮುದಾಯ ಸೇವಾ ಕಾರ್ಯಕ್ರಮ</span><span class="en">Community Initiative</span><div class="meta"><span>Vijayanagar</span><a href="#">Know More &rarr;</a></div></div></div>
+    </div>
+    <p style="text-align:center;margin-top:30px;"><a href="#" class="btn btn-primary kn" style="background:var(--navy);">ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ನೋಡಿ | View All Events</a></p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Gallery</h2><span class="kn">ಚಿತ್ರಶಾಲೆ</span></div>
+    <div class="gallery-grid">
+      <figure><img src="seminars.png" alt="Seminar moment"><figcaption class="kn">ವಿಚಾರ ಸಂಕಿರಣ</figcaption></figure>
+      <figure><img src="youth dailogues.png" alt="Youth dialogue moment"><figcaption class="kn">ಯುವ ಸಂವಾದ</figcaption></figure>
+      <figure><img src="community.png" alt="Social initiative moment"><figcaption class="kn">ಸಾಮಾಜಿಕ ಕಾರ್ಯಕ್ರಮ</figcaption></figure>
+      <figure><img src="culture.png" alt="Cultural programme moment"><figcaption class="kn">ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮ</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="posts" class="section-alt">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Posts &amp; News</h2><span class="kn">ಪೋಸ್ಟ್‌ಗಳು</span></div>
+    <div class="posts-toolbar">
+      <p class="hint">Latest updates from Neharu Vichar Vedike. To add or edit posts here, update this section directly in the HTML file — no backend or sign-in required.</p>
+    </div>
+    <div class="posts-grid">
+      <div class="post-card">
+        <img src="youth dailogues.png" alt="Youth Dialogue Series">
+        <div class="body">
+          <span class="cat">Event Report</span>
+          <h3>Youth Dialogue Series Kicks Off Across Bengaluru</h3>
+          <p class="excerpt">Over 200 young participants joined our first structured dialogue on civic participation.</p>
+          <div class="foot"><span>16 Mar 2026</span><span>Neharu Vichar Vedike</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <img src="awerness.png" alt="Community awareness drive">
+        <div class="body">
+          <span class="cat">Announcement</span>
+          <h3>Call for Volunteers: Community Awareness Drive</h3>
+          <p class="excerpt">We are inviting volunteers for our upcoming public awareness and outreach programme.</p>
+          <div class="foot"><span>28 Feb 2026</span><span>Neharu Vichar Vedike</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <img src="education.png" alt="Scientific temper and education">
+        <div class="body">
+          <span class="cat">Article</span>
+          <h3>Why Scientific Temper Matters for Democracy</h3>
+          <p class="excerpt">A short reflection on evidence-based thinking and its role in public life.</p>
+          <div class="foot"><span>10 Feb 2026</span><span>Neharu Vichar Vedike</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="join">
+  <div class="wrap join-inner">
+    <h2 class="kn" style="color:#fff;">ನಮ್ಮೊಂದಿಗೆ ಸೇರಿ | Join Us</h2>
+    <p class="kn">ನೀವು ಕಲಿಯಲು ಬಯಸಿದರೆ, ಪ್ರಶ್ನಿಸಲು ಬಯಸಿದರೆ, ಚರ್ಚಿಸಲು ಬಯಸಿದರೆ ಅಥವಾ ಸಮಾಜದಲ್ಲಿ ಸಕಾರಾತ್ಮಕವಾಗಿ ಕೊಡುಗೆ ನೀಡಲು ಬಯಸಿದರೆ — ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ ನಿಮ್ಮನ್ನು ಸ್ವಾಗತಿಸುತ್ತದೆ.</p>
+    <p>Your Voice. Your Ideas. Your Participation. If you want to learn, question, discuss or contribute positively to society, Neharu Vichar Vedike welcomes you.</p>
+    <a href="#contact" class="btn btn-primary kn">ಈಗ ಸೇರಿ | Join Now</a>
+  </div>
+</section>
+
+<section id="contact" class="section-alt">
+  <div class="wrap">
+    <div class="section-head"><span class="num"></span><h2>Contact Us</h2><span class="kn">ಸಂಪರ್ಕಿಸಿ</span></div>
+    <p style="max-width:60ch;color:#5a6577;margin-top:-16px;margin-bottom:30px;">For programmes, collaboration, membership or general enquiries, please get in touch with us.</p>
+    <ul class="contact-info" style="list-style:none;padding:0;max-width:480px;">
+      <li><span class="ico">&#128222;</span> +91 XXXXXXXXXX</li>
+      <li><span class="ico">&#9993;</span> <a href="mailto:info@neharuvicharvedike.org">info@neharuvicharvedike.org</a></li>
+      <li><span class="ico">&#128205;</span> Vijayanagar, Bengaluru, Karnataka</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="kn" style="color:#fff;font-weight:700;">ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ &mdash; NEHARU VICHAR VEDIKE</div>
+        <div class="tagline kn">"ವಿಚಾರದಿಂದ ಬೆಳಕು — ಬೆಳಕಿನಿಂದ ಬದಲಾವಣೆ."</div>
+      </div>
+      <nav><a href="#home">Home</a><a href="#about">About</a><a href="#mission">Mission</a><a href="#activities">Activities</a><a href="#events">Events</a><a href="#gallery">Gallery</a><a href="#join">Join Us</a><a href="#contact">Contact</a></nav>
+    </div>
+    <p class="fine">&copy; 2026 Neharu Vichar Vedike. All Rights Reserved. &mdash; Static site, hosted with no backend.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- mobile nav (the only JS on this page; no storage, no backend calls) ----
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', function(){ mainNav.classList.toggle('open'); });
+  mainNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mainNav.classList.remove('open'); });
+  });
+})();
+</script>
+</body>
+</html>
