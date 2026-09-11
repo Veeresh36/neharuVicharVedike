@@ -1,15 +1,13 @@
 backend:
-  name: git-gateway
-  branch: main   # change this if your default GitHub branch is called "master"
+  name: github
+  repo: Veeresh36/neharuVicharVedike
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
-# Where uploaded images get saved in the repo, and the path used on the live site.
-# "" and "/" mean: save straight into the repo root, same place as about.png, seminars.png, etc.
 media_folder: ""
 public_folder: "/"
 
-# Decap CMS requires at least one collection to load. This one gives you a simple
-# form to edit your contact details without touching HTML — plus it unlocks the
-# "Media" tab in the top nav, which is what you'll actually use to upload/replace images.
 collections:
   - name: "site_info"
     label: "Site Info"
