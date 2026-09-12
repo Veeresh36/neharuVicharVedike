@@ -1,23 +1,37 @@
-(function () {
-  "use strict";
+"use strict";
 
+(function () {
   const dashboard = document.getElementById("custom-dashboard");
+  const decapContainer = document.getElementById("nc-root");
   const searchInput = document.getElementById("collectionSearch");
 
-  if (!dashboard) {
+  if (!dashboard || !decapContainer) {
     return;
   }
 
-  /*
-   * Dashboard navigation.
-   *
-   * Content links intentionally use Decap's normal hash routes.
-   * This means we do not bypass Decap's authentication or editing
-   * functionality.
-   */
-
   const contentRows = document.querySelectorAll(".content-row");
   const navItems = document.querySelectorAll(".nav-item");
+
+  function isDashboardRoute() {
+    const hash = window.location.hash;
+
+    return (
+      hash === "" ||
+      hash === "#" ||
+      hash === "#/" ||
+      hash === "#/dashboard"
+    );
+  }
+
+  function updateView() {
+    if (isDashboardRoute()) {
+      dashboard.style.display = "block";
+      decapContainer.style.display = "none";
+    } else {
+      dashboard.style.display = "none";
+      decapContainer.style.display = "block";
+    }
+  }
 
   function normalizeText(value) {
     return String(value || "")
@@ -54,15 +68,7 @@
     });
   });
 
-  /*
-   * Keep the dashboard as the visual entry point.
-   *
-   * Decap itself remains available through the content links.
-   */
+  window.addEventListener("hashchange", updateView);
 
-  window.NehruVicharCMS = {
-    openDashboard() {
-      window.location.href = "/admin/";
-    },
-  };
+  updateView();
 })();
