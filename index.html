@@ -155,6 +155,16 @@
         font-weight: 900;
         font-size: 1.3rem;
         flex-shrink: 0;
+        overflow: hidden;
+      }
+      .brand .mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .brand .mark img.flip {
+        transform: scaleX(-1);
       }
       .brand .names {
         display: flex;
@@ -1177,6 +1187,16 @@
         font-weight: 900;
         font-size: 1.1rem;
         flex-shrink: 0;
+        overflow: hidden;
+      }
+      .footer-brand .mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .footer-brand .mark img.flip {
+        transform: scaleX(-1);
       }
       .footer-brand .kn-name {
         color: #fff;
@@ -1587,7 +1607,7 @@
     <header class="site">
       <div class="site-header-inner">
         <a href="#home" class="brand">
-          <div class="mark">ನೆ</div>
+          <div class="mark"><img src="uploads/nehru.jpg" alt="Jawaharlal Nehru" /></div>
           <div class="names">
             <div class="kn-name kn">ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ</div>
             <div class="en-name">NEHARU VICHAR VEDIKE</div>
@@ -2059,7 +2079,7 @@
           <div class="footer-grid">
             <div class="footer-brand">
               <div class="mark-row">
-                <div class="mark">ನೆ</div>
+                <div class="mark"><img src="uploads/nehru.jpg" alt="Jawaharlal Nehru" /></div>
                 <div>
                   <div class="kn-name">ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ</div>
                   <div class="en-name">NEHARU VICHAR VEDIKE</div>
