@@ -761,6 +761,13 @@
         border: 1px solid var(--line);
         border-radius: var(--radius);
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow 0.15s ease, transform 0.15s ease;
+      }
+      .event-card:hover {
+        box-shadow: 0 16px 30px -18px rgba(11, 31, 66, 0.35);
+        transform: translateY(-2px);
       }
       .event-card .img-wrap {
         position: relative;
@@ -792,6 +799,9 @@
       }
       .event-card .body {
         padding: 16px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
       }
       .event-card .kn {
         display: block;
@@ -811,6 +821,20 @@
         align-items: center;
         font-size: 0.82rem;
         color: #667;
+        margin-top: auto;
+        padding-top: 8px;
+      }
+      .event-card .meta a {
+        color: var(--saffron-dark);
+        font-weight: 600;
+      }
+      .event-card .meta a:hover {
+        text-decoration: underline;
+      }
+      .event-card .meta .know-more-disabled {
+        color: #9aa3b5;
+        font-weight: 600;
+        cursor: default;
       }
 
       /* ---------- Gallery ---------- */
@@ -868,6 +892,11 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        transition: box-shadow 0.15s ease, transform 0.15s ease;
+      }
+      .post-card:hover {
+        box-shadow: 0 16px 30px -18px rgba(11, 31, 66, 0.35);
+        transform: translateY(-2px);
       }
       .post-card img {
         aspect-ratio: 16/10;
@@ -1032,38 +1061,7 @@
         }
       }
 
-      footer.site {
-        background: var(--navy-dark);
-        color: #aebbd8;
-        padding: 36px 0 20px;
-      }
-      footer.site .foot-inner {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 16px;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        padding-bottom: 22px;
-        margin-bottom: 16px;
-      }
-      footer.site nav a {
-        margin-right: 18px;
-        font-size: 0.87rem;
-      }
-      footer.site .tagline {
-        font-size: 0.85rem;
-        font-style: italic;
-        color: #9fb0d4;
-        margin-top: 4px;
-      }
-      footer.site .fine {
-        font-size: 0.78rem;
-        text-align: center;
-        color: #7c88a6;
-      }
-
-      /* ---------- Footer (premium) ---------- */
+      /* ---------- Footer ---------- */
       footer.site {
         background: var(--navy-dark);
         color: #aebbd8;
@@ -1951,10 +1949,9 @@
           });
       }
 
-      // Contact (also fills footer copies)
+      // Contact (also fills footer copies) — single fetch, used everywhere
       loadJSON("/site-info.json").then(function (data) {
         if (!data) return;
-        var ids = ["contact-phone", "footer-phone"];
         var p = document.getElementById("contact-phone"),
           fp = document.getElementById("footer-phone");
         var e = document.getElementById("contact-email"),
@@ -2029,26 +2026,21 @@
           .join("");
       });
 
-      // Events
+      // Events — fixed: no more nested <a> inside <a>. Only "Know More"
+      // is a link; the card itself is a plain container.
       loadJSON("/events.json").then(function (d) {
         if (!d || !d.items) return;
         var grid = document.getElementById("events-grid");
         grid.innerHTML = d.items
           .map(function (ev) {
             var hasLink = ev.link && ev.link.trim().length > 0;
-            var openTag = hasLink
-              ? '<a class="event-card" href="' +
-                ev.link +
-                '" target="_blank" rel="noopener" style="display:block;">'
-              : '<div class="event-card">';
-            var closeTag = hasLink ? "</a>" : "</div>";
             var knowMore = hasLink
               ? '<a href="' +
                 ev.link +
                 '" target="_blank" rel="noopener">Know More &rarr;</a>'
-              : '<a href="#">Know More &rarr;</a>';
+              : '<span class="know-more-disabled">Know More &rarr;</span>';
             return (
-              openTag +
+              '<div class="event-card">' +
               '<div class="img-wrap"><img src="' +
               ev.image +
               '" alt="' +
@@ -2065,14 +2057,13 @@
               ev.location +
               "</span>" +
               knowMore +
-              "</div></div>" +
-              closeTag
+              "</div></div></div>"
             );
           })
           .join("");
       });
 
-      // Gallery (with "Show More" pagination, 6 at a time)
+      // Gallery (with "Show More" pagination, 8 at a time)
       loadJSON("/gallery.json").then(function (d) {
         if (!d || !d.items) return;
         var grid = document.getElementById("gallery-grid");
@@ -2137,29 +2128,6 @@
           })
           .join("");
       });
-    </script>
-
-    <script>
-      (function () {
-        fetch("/site-info.json")
-          .then(function (res) {
-            return res.json();
-          })
-          .then(function (data) {
-            var phoneEl = document.getElementById("contact-phone");
-            var emailEl = document.getElementById("contact-email");
-            var addressEl = document.getElementById("contact-address");
-            if (phoneEl && data.phone) phoneEl.textContent = data.phone;
-            if (emailEl && data.email) {
-              emailEl.textContent = data.email;
-              emailEl.href = "mailto:" + data.email;
-            }
-            if (addressEl && data.address) addressEl.textContent = data.address;
-          })
-          .catch(function (err) {
-            console.error("Could not load site info:", err);
-          });
-      })();
     </script>
 
     <script>
