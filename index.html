@@ -938,6 +938,100 @@
         flex-shrink: 0;
       }
 
+      /* ---------- Contact Form ---------- */
+      .contact-form {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 32px;
+        box-shadow: 0 20px 40px -24px rgba(11, 31, 66, 0.15);
+      }
+      .contact-form h3 {
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+        color: var(--navy-dark);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .form-group.full {
+        grid-column: 1 / -1;
+      }
+      .form-group label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--navy-dark);
+        letter-spacing: 0.02em;
+      }
+      .form-group input,
+      .form-group textarea {
+        font-family: inherit;
+        font-size: 0.92rem;
+        padding: 11px 13px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--cream);
+        color: var(--ink);
+        transition: border-color 0.15s ease, background 0.15s ease;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--saffron);
+        background: var(--white);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+      .contact-form .btn-primary {
+        background: var(--navy);
+        border: none;
+        width: 100%;
+        font-size: 0.95rem;
+      }
+      .contact-form .btn-primary:hover {
+        background: var(--navy-dark);
+      }
+      .contact-form .btn-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .form-status {
+        font-size: 0.85rem;
+        margin-top: 12px;
+        display: none;
+        padding: 10px 12px;
+        border-radius: var(--radius);
+      }
+      .form-status.success {
+        display: block;
+        background: #e7f5ec;
+        color: var(--green);
+        border: 1px solid #bfe3ca;
+      }
+      .form-status.error {
+        display: block;
+        background: #fbe9e4;
+        color: #a53d3d;
+        border: 1px solid #f0c6b8;
+      }
+
+      @media (max-width: 640px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
       footer.site {
         background: var(--navy-dark);
         color: #aebbd8;
@@ -1688,25 +1782,64 @@
           For programmes, collaboration, membership or general enquiries, please
           get in touch with us.
         </p>
-        <ul
-          class="contact-info"
-          style="list-style: none; padding: 0; max-width: 480px"
-        >
-          <li>
-            <span class="ico">&#128222;</span>
-            <span id="contact-phone">+91 XXXXXXXXXX</span>
-          </li>
-          <li>
-            <span class="ico">&#9993;</span>
-            <a id="contact-email" href="mailto:info@neharuvicharvedike.org"
-              >info@neharuvicharvedike.org</a
+
+        <div class="contact-grid">
+          <div>
+            <ul
+              class="contact-info"
+              style="list-style: none; padding: 0; max-width: 480px"
             >
-          </li>
-          <li>
-            <span class="ico">&#128205;</span>
-            <span id="contact-address">Vijayanagar, Bengaluru, Karnataka</span>
-          </li>
-        </ul>
+              <li>
+                <span class="ico">&#128222;</span>
+                <span id="contact-phone">+91 XXXXXXXXXX</span>
+              </li>
+              <li>
+                <span class="ico">&#9993;</span>
+                <a id="contact-email" href="mailto:info@neharuvicharvedike.org"
+                  >info@neharuvicharvedike.org</a
+                >
+              </li>
+              <li>
+                <span class="ico">&#128205;</span>
+                <span id="contact-address"
+                  >Vijayanagar, Bengaluru, Karnataka</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-form">
+            <h3>Send us a message</h3>
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-name">Name</label>
+                  <input type="text" id="cf-name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="cf-email">Email</label>
+                  <input type="email" id="cf-email" name="email" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group full">
+                  <label for="cf-subject">Subject</label>
+                  <input type="text" id="cf-subject" name="subject" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group full">
+                  <label for="cf-message">Message</label>
+                  <textarea id="cf-message" name="message" required></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" id="cf-submit">
+                Send Message
+              </button>
+              <div class="form-status" id="cf-status"></div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2026,6 +2159,51 @@
           .catch(function (err) {
             console.error("Could not load site info:", err);
           });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var form = document.getElementById("contactForm");
+        var status = document.getElementById("cf-status");
+        var submitBtn = document.getElementById("cf-submit");
+        if (!form) return;
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+          status.className = "form-status";
+          status.style.display = "none";
+
+          var data = new FormData(form);
+
+          fetch("https://formspree.io/f/YOUR_FORM_ID", {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          })
+            .then(function (res) {
+              if (res.ok) {
+                status.textContent = "Thank you! Your message has been sent.";
+                status.className = "form-status success";
+                form.reset();
+              } else {
+                status.textContent =
+                  "Something went wrong. Please try again or email us directly.";
+                status.className = "form-status error";
+              }
+            })
+            .catch(function () {
+              status.textContent =
+                "Network error. Please try again or email us directly.";
+              status.className = "form-status error";
+            })
+            .finally(function () {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Send Message";
+            });
+        });
       })();
     </script>
   </body>
