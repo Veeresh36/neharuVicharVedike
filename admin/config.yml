@@ -98,3 +98,20 @@ collections:
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Caption (Kannada)", name: "caption_kn", widget: "string" }
+
+  - name: "messages"
+    label: "Contact Messages"
+    files:
+      - file: "messages.json"
+        label: "Messages"
+        name: "messages"
+        fields:
+          - label: "Messages"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Subject", name: "subject", widget: "string" }
+              - { label: "Message", name: "message", widget: "text" }
+              - { label: "Date", name: "date", widget: "string" }

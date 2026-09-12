@@ -2163,48 +2163,41 @@
     </script>
 
     <script>
-      (function () {
-        var form = document.getElementById("contactForm");
-        var status = document.getElementById("cf-status");
-        var submitBtn = document.getElementById("cf-submit");
-        if (!form) return;
-
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Sending...";
-          status.className = "form-status";
-          status.style.display = "none";
-
-          var data = new FormData(form);
-
-          fetch("https://formspree.io/f/YOUR_FORM_ID", {
-            method: "POST",
-            body: data,
-            headers: { Accept: "application/json" },
-          })
-            .then(function (res) {
-              if (res.ok) {
-                status.textContent = "Thank you! Your message has been sent.";
-                status.className = "form-status success";
-                form.reset();
-              } else {
-                status.textContent =
-                  "Something went wrong. Please try again or email us directly.";
-                status.className = "form-status error";
-              }
-            })
-            .catch(function () {
-              status.textContent =
-                "Network error. Please try again or email us directly.";
-              status.className = "form-status error";
-            })
-            .finally(function () {
-              submitBtn.disabled = false;
-              submitBtn.textContent = "Send Message";
-            });
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          subject: data.get("subject"),
+          message: data.get("message"),
+        }),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) {
+            return { ok: res.ok, json: json };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            status.textContent = "Thank you! Your message has been sent.";
+            status.className = "form-status success";
+            form.reset();
+          } else {
+            status.textContent =
+              result.json.error || "Something went wrong. Please try again.";
+            status.className = "form-status error";
+          }
+        })
+        .catch(function () {
+          status.textContent =
+            "Network error. Please try again or email us directly.";
+          status.className = "form-status error";
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Send Message";
         });
-      })();
     </script>
   </body>
 </html>
