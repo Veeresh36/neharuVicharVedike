@@ -1703,8 +1703,16 @@
         var grid = document.getElementById("posts-grid");
         grid.innerHTML = d.items
           .map(function (p) {
+            var hasLink = p.link && p.link.trim().length > 0;
+            var openTag = hasLink
+              ? '<a class="post-card" href="' +
+                p.link +
+                '" target="_blank" rel="noopener" style="display:flex;flex-direction:column;">'
+              : '<div class="post-card">';
+            var closeTag = hasLink ? "</a>" : "</div>";
             return (
-              '<div class="post-card"><img src="' +
+              openTag +
+              '<img src="' +
               p.image +
               '" alt="' +
               p.title +
@@ -1716,7 +1724,8 @@
               p.excerpt +
               '</p><div class="foot"><span>' +
               p.date +
-              "</span><span>Neharu Vichar Vedike</span></div></div></div>"
+              "</span><span>Neharu Vichar Vedike</span></div></div>" +
+              closeTag
             );
           })
           .join("");
