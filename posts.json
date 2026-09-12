@@ -1,7 +1,32 @@
 {
   "items": [
-    { "category": "Event Report", "title": "Youth Dialogue Series Kicks Off Across Bengaluru", "excerpt": "Over 200 young participants joined our first structured dialogue on civic participation.", "date": "16 Mar 2026", "image": "uploads/youth dailogues.png" },
-    { "category": "Announcement", "title": "Call for Volunteers: Community Awareness Drive", "excerpt": "We are inviting volunteers for our upcoming public awareness and outreach programme.", "date": "28 Feb 2026", "image": "uploads/awerness.png" },
-    { "category": "Article", "title": "Why Scientific Temper Matters for Democracy", "excerpt": "A short reflection on evidence-based thinking and its role in public life.", "date": "10 Feb 2026", "image": "uploads/education.png" }
+    {
+      "category": "Event Report",
+      "title": "Youth Dialogue Series Kicks Off Across Bengaluru",
+      "excerpt": "Over 200 young participants joined our first structured dialogue on civic participation.",
+      "date": "16 Mar 2026",
+      "image": "uploads/youth dailogues.png"
+    },
+    {
+      "category": "Announcement",
+      "title": "Call for Volunteers: Community Awareness Drive",
+      "excerpt": "We are inviting volunteers for our upcoming public awareness and outreach programme.",
+      "date": "28 Feb 2026",
+      "image": "uploads/awerness.png"
+    },
+    {
+      "category": "Article",
+      "title": "Why Scientific Temper Matters for Democracy",
+      "excerpt": "A short reflection on evidence-based thinking and its role in public life.",
+      "date": "10 Feb 2026",
+      "image": "uploads/education.png"
+    },
+    {
+      "category": "sdklfjklsj",
+      "title": "jskcjkjsk",
+      "excerpt": "cdkjckjmkcksjmk",
+      "date": "dmnckl",
+      "image": "/uploads/2026-techies-layoffs-cover.webp"
+    }
   ]
 }
