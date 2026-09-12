@@ -14,8 +14,7 @@
       rel="stylesheet"
     />
     <style>
-      body,
-      html {
+      body {
         overflow-x: hidden;
       }
 
@@ -121,7 +120,12 @@
         border-bottom: 1px solid var(--line);
         position: sticky;
         top: 0;
-        z-index: 50;
+        z-index: 999;
+        width: 100%;
+        transition: box-shadow 0.2s ease;
+      }
+      header.site.is-scrolled {
+        box-shadow: 0 8px 20px -14px rgba(11, 31, 66, 0.35);
       }
       .site-header-inner {
         display: flex;
@@ -2143,6 +2147,20 @@
             mainNav.classList.remove("open");
             navToggle.setAttribute("aria-expanded", "false");
           });
+        });
+
+        // ---- sticky header shadow on scroll ----
+        var siteHeader = document.querySelector("header.site");
+        function updateHeaderShadow() {
+          if (window.scrollY > 4) {
+            siteHeader.classList.add("is-scrolled");
+          } else {
+            siteHeader.classList.remove("is-scrolled");
+          }
+        }
+        updateHeaderShadow();
+        window.addEventListener("scroll", updateHeaderShadow, {
+          passive: true,
         });
       })();
 
