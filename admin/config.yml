@@ -19,3 +19,80 @@ collections:
           - { label: "Phone", name: "phone", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Address", name: "address", widget: "string" }
+
+      - file: "hero.json"
+        label: "Homepage Hero"
+        name: "hero"
+        fields:
+          - { label: "Kannada Tag", name: "kn_tag", widget: "string" }
+          - { label: "Title (English)", name: "title", widget: "string" }
+          - { label: "Subtitle (Kannada)", name: "sub_kn", widget: "string" }
+          - { label: "Subtitle (English)", name: "sub_en", widget: "string" }
+          - { label: "Quote (Kannada)", name: "quote_kn", widget: "text" }
+          - { label: "Quote (English)", name: "quote_en", widget: "text" }
+
+      - file: "about.json"
+        label: "About Section"
+        name: "about"
+        fields:
+          - { label: "Eyebrow Tag", name: "eyebrow", widget: "string" }
+          - { label: "Paragraph 1 (Kannada)", name: "paragraph_kn_1", widget: "text" }
+          - { label: "Paragraph (English)", name: "paragraph_en", widget: "text" }
+          - { label: "Paragraph 2 (Kannada)", name: "paragraph_kn_2", widget: "text" }
+          - { label: "Fact 1 Number", name: "fact1_number", widget: "string" }
+          - { label: "Fact 1 Label", name: "fact1_label", widget: "string" }
+          - { label: "Fact 2 Number", name: "fact2_number", widget: "string" }
+          - { label: "Fact 2 Label", name: "fact2_label", widget: "string" }
+          - { label: "Fact 3 Number", name: "fact3_number", widget: "string" }
+          - { label: "Fact 3 Label", name: "fact3_label", widget: "string" }
+
+      - file: "mission.json"
+        label: "Mission List"
+        name: "mission"
+        fields:
+          - label: "Mission Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Kannada", name: "kn", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+      - file: "events.json"
+        label: "Events"
+        name: "events"
+        fields:
+          - label: "Event List"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Day", name: "day", widget: "string" }
+              - { label: "Month (3-letter)", name: "month", widget: "string" }
+              - { label: "Title (Kannada)", name: "title_kn", widget: "string" }
+              - { label: "Title (English)", name: "title_en", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+
+      - file: "posts.json"
+        label: "Posts & News"
+        name: "posts"
+        fields:
+          - label: "Post List"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+
+      - file: "gallery.json"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - label: "Gallery Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption (Kannada)", name: "caption_kn", widget: "string" }
