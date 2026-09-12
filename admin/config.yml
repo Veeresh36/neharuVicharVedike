@@ -85,6 +85,7 @@ collections:
               - { label: "Excerpt", name: "excerpt", widget: "text" }
               - { label: "Date", name: "date", widget: "string" }
               - { label: "Image", name: "image", widget: "image" }
+              - { label: "Link URL", name: "link", widget: "string", required: false, hint: "Full URL to open when this card is clicked (optional)" }
 
       - file: "gallery.json"
         label: "Gallery"
