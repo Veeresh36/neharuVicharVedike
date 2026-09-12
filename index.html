@@ -18,7 +18,7 @@
       html {
         overflow-x: hidden;
       }
-      
+
       :root {
         --navy: #122f60;
         --navy-dark: #0b1f42;
@@ -146,15 +146,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: "Merriweather", serif;
+        font-family: "Noto Sans Kannada", "Merriweather", serif;
         font-weight: 900;
         font-size: 1.3rem;
         flex-shrink: 0;
+      }
+      .brand .names {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 1.15;
       }
       .brand .names .kn-name {
         color: var(--navy);
         font-weight: 700;
         font-size: 1.05rem;
+        font-family: "Noto Sans Kannada", sans-serif;
       }
       .brand .names .en-name {
         color: var(--saffron-dark);
