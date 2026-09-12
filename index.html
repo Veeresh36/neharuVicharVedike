@@ -2015,7 +2015,7 @@
           <div class="contact-card">
             <div class="icon">&#128222;</div>
             <span class="label">Phone</span>
-            <span class="value" id="contact-phone">+91 XXXXXXXXXX</span>
+            <a class="value" id="contact-phone" href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a>
             <span class="sub">Mon–Sat, 10 AM – 6 PM</span>
           </div>
           <div class="contact-card">
@@ -2102,7 +2102,7 @@
             <div class="footer-col">
               <h4>Contact</h4>
               <ul>
-                <li id="footer-phone">+91 XXXXXXXXXX</li>
+                <li><a id="footer-phone" href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></li>
                 <li>
                   <a id="footer-email" href="mailto:info@neharuvicharvedike.org"
                     >info@neharuvicharvedike.org</a
@@ -2184,8 +2184,14 @@
           fe = document.getElementById("footer-email");
         var a = document.getElementById("contact-address"),
           fa = document.getElementById("footer-address");
-        if (p && data.phone) p.textContent = data.phone;
-        if (fp && data.phone) fp.textContent = data.phone;
+        if (p && data.phone) {
+          p.textContent = data.phone;
+          p.href = "tel:" + data.phone.replace(/[^\d+]/g, "");
+        }
+        if (fp && data.phone) {
+          fp.textContent = data.phone;
+          fp.href = "tel:" + data.phone.replace(/[^\d+]/g, "");
+        }
         if (e && data.email) {
           e.textContent = data.email;
           e.href = "mailto:" + data.email;
