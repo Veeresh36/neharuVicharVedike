@@ -71,6 +71,7 @@ collections:
               - { label: "Title (English)", name: "title_en", widget: "string" }
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Image", name: "image", widget: "image" }
+              - { label: "Link URL", name: "link", widget: "string", required: false, hint: "Full URL to open when this card is clicked (optional)" }
 
       - file: "posts.json"
         label: "Posts & News"
