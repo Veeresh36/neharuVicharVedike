@@ -8,119 +8,44 @@ backend:
 media_folder: "uploads"
 public_folder: "/uploads"
 
-# CMS branding
-logo:
-  src: "/images/nehru-vichar-vedike-logo.svg"
-  show_in_header: true
-
-site_url: "https://neharu-vichar-vedike.vercel.app"
-display_url: "https://neharu-vichar-vedike.vercel.app"
-
 collections:
   - name: "website"
     label: "Website Content"
     files:
-
-      # =====================================================
-      # SITE SETTINGS
-      # =====================================================
       - file: "site-info.json"
         label: "Contact & Basic Info"
         name: "site_info"
         fields:
-          - label: "Phone"
-            name: "phone"
-            widget: "string"
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
 
-          - label: "Email"
-            name: "email"
-            widget: "string"
-
-          - label: "Address"
-            name: "address"
-            widget: "string"
-
-      # =====================================================
-      # HOMEPAGE HERO
-      # =====================================================
       - file: "hero.json"
         label: "Homepage Hero"
         name: "hero"
         fields:
-          - label: "Kannada Tag"
-            name: "kn_tag"
-            widget: "string"
+          - { label: "Kannada Tag", name: "kn_tag", widget: "string" }
+          - { label: "Title (English)", name: "title", widget: "string" }
+          - { label: "Subtitle (Kannada)", name: "sub_kn", widget: "string" }
+          - { label: "Subtitle (English)", name: "sub_en", widget: "string" }
+          - { label: "Quote (Kannada)", name: "quote_kn", widget: "text" }
+          - { label: "Quote (English)", name: "quote_en", widget: "text" }
 
-          - label: "Title (English)"
-            name: "title"
-            widget: "string"
-
-          - label: "Subtitle (Kannada)"
-            name: "sub_kn"
-            widget: "string"
-
-          - label: "Subtitle (English)"
-            name: "sub_en"
-            widget: "string"
-
-          - label: "Quote (Kannada)"
-            name: "quote_kn"
-            widget: "text"
-
-          - label: "Quote (English)"
-            name: "quote_en"
-            widget: "text"
-
-      # =====================================================
-      # ABOUT SECTION
-      # =====================================================
       - file: "about.json"
         label: "About Section"
         name: "about"
         fields:
-          - label: "Eyebrow Tag"
-            name: "eyebrow"
-            widget: "string"
+          - { label: "Eyebrow Tag", name: "eyebrow", widget: "string" }
+          - { label: "Paragraph 1 (Kannada)", name: "paragraph_kn_1", widget: "text" }
+          - { label: "Paragraph (English)", name: "paragraph_en", widget: "text" }
+          - { label: "Paragraph 2 (Kannada)", name: "paragraph_kn_2", widget: "text" }
+          - { label: "Fact 1 Number", name: "fact1_number", widget: "string" }
+          - { label: "Fact 1 Label", name: "fact1_label", widget: "string" }
+          - { label: "Fact 2 Number", name: "fact2_number", widget: "string" }
+          - { label: "Fact 2 Label", name: "fact2_label", widget: "string" }
+          - { label: "Fact 3 Number", name: "fact3_number", widget: "string" }
+          - { label: "Fact 3 Label", name: "fact3_label", widget: "string" }
 
-          - label: "Paragraph 1 (Kannada)"
-            name: "paragraph_kn_1"
-            widget: "text"
-
-          - label: "Paragraph (English)"
-            name: "paragraph_en"
-            widget: "text"
-
-          - label: "Paragraph 2 (Kannada)"
-            name: "paragraph_kn_2"
-            widget: "text"
-
-          - label: "Fact 1 Number"
-            name: "fact1_number"
-            widget: "string"
-
-          - label: "Fact 1 Label"
-            name: "fact1_label"
-            widget: "string"
-
-          - label: "Fact 2 Number"
-            name: "fact2_number"
-            widget: "string"
-
-          - label: "Fact 2 Label"
-            name: "fact2_label"
-            widget: "string"
-
-          - label: "Fact 3 Number"
-            name: "fact3_number"
-            widget: "string"
-
-          - label: "Fact 3 Label"
-            name: "fact3_label"
-            widget: "string"
-
-      # =====================================================
-      # MISSION
-      # =====================================================
       - file: "mission.json"
         label: "Mission List"
         name: "mission"
@@ -129,17 +54,9 @@ collections:
             name: "items"
             widget: "list"
             fields:
-              - label: "Kannada"
-                name: "kn"
-                widget: "text"
+              - { label: "Kannada", name: "kn", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
 
-              - label: "English"
-                name: "en"
-                widget: "text"
-
-      # =====================================================
-      # EVENTS
-      # =====================================================
       - file: "events.json"
         label: "Events"
         name: "events"
@@ -147,42 +64,15 @@ collections:
           - label: "Event List"
             name: "items"
             widget: "list"
-            summary: "{{day}} {{month}} — {{title_en}}"
             fields:
-              - label: "Day"
-                name: "day"
-                widget: "string"
+              - { label: "Day", name: "day", widget: "string" }
+              - { label: "Month (3-letter)", name: "month", widget: "string" }
+              - { label: "Title (Kannada)", name: "title_kn", widget: "string" }
+              - { label: "Title (English)", name: "title_en", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Link URL", name: "link", widget: "string", required: false, hint: "Full URL to open when this card is clicked (optional)" }
 
-              - label: "Month (3-letter)"
-                name: "month"
-                widget: "string"
-                hint: "Example: JAN, FEB, MAR"
-
-              - label: "Title (Kannada)"
-                name: "title_kn"
-                widget: "string"
-
-              - label: "Title (English)"
-                name: "title_en"
-                widget: "string"
-
-              - label: "Location"
-                name: "location"
-                widget: "string"
-
-              - label: "Image"
-                name: "image"
-                widget: "image"
-
-              - label: "Link URL"
-                name: "link"
-                widget: "string"
-                required: false
-                hint: "Full URL to open when this card is clicked (optional)"
-
-      # =====================================================
-      # POSTS & NEWS
-      # =====================================================
       - file: "posts.json"
         label: "Posts & News"
         name: "posts"
@@ -190,38 +80,14 @@ collections:
           - label: "Post List"
             name: "items"
             widget: "list"
-            summary: "{{date}} — {{title}}"
             fields:
-              - label: "Category"
-                name: "category"
-                widget: "string"
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Link URL", name: "link", widget: "string", required: false, hint: "Full URL to open when this card is clicked (optional)" }
 
-              - label: "Title"
-                name: "title"
-                widget: "string"
-
-              - label: "Excerpt"
-                name: "excerpt"
-                widget: "text"
-
-              - label: "Date"
-                name: "date"
-                widget: "string"
-                hint: "Example: 12 Sep 2026"
-
-              - label: "Image"
-                name: "image"
-                widget: "image"
-
-              - label: "Link URL"
-                name: "link"
-                widget: "string"
-                required: false
-                hint: "Full URL to open when this card is clicked (optional)"
-
-      # =====================================================
-      # GALLERY
-      # =====================================================
       - file: "gallery.json"
         label: "Gallery"
         name: "gallery"
@@ -229,22 +95,10 @@ collections:
           - label: "Gallery Items"
             name: "items"
             widget: "list"
-            summary: "{{caption_kn}}"
             fields:
-              - label: "Image"
-                name: "image"
-                widget: "image"
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption (Kannada)", name: "caption_kn", widget: "string" }
 
-              - label: "Caption (Kannada)"
-                name: "caption_kn"
-                widget: "string"
-
-  # =======================================================
-  # CONTACT MESSAGES
-  # =======================================================
-  # Enable this only if your website actually writes
-  # submitted contact messages into messages.json.
-  #
   # - name: "messages"
   #   label: "Contact Messages"
   #   files:
