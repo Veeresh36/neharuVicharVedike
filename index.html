@@ -1644,8 +1644,21 @@
         var grid = document.getElementById("events-grid");
         grid.innerHTML = d.items
           .map(function (ev) {
+            var hasLink = ev.link && ev.link.trim().length > 0;
+            var openTag = hasLink
+              ? '<a class="event-card" href="' +
+                ev.link +
+                '" target="_blank" rel="noopener" style="display:block;">'
+              : '<div class="event-card">';
+            var closeTag = hasLink ? "</a>" : "</div>";
+            var knowMore = hasLink
+              ? '<a href="' +
+                ev.link +
+                '" target="_blank" rel="noopener">Know More &rarr;</a>'
+              : '<a href="#">Know More &rarr;</a>';
             return (
-              '<div class="event-card"><div class="img-wrap"><img src="' +
+              openTag +
+              '<div class="img-wrap"><img src="' +
               ev.image +
               '" alt="' +
               ev.title_en +
@@ -1659,12 +1672,15 @@
               ev.title_en +
               '</span><div class="meta"><span>' +
               ev.location +
-              '</span><a href="#">Know More &rarr;</a></div></div></div>'
+              "</span>" +
+              knowMore +
+              "</div></div>" +
+              closeTag
             );
           })
           .join("");
       });
-
+      
       // Gallery (with "Show More" pagination, 6 at a time)
       loadJSON("/gallery.json").then(function (d) {
         if (!d || !d.items) return;
