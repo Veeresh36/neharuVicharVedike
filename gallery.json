@@ -1,8 +1,8 @@
 {
   "items": [
-    { "image": "seminars.png", "caption_kn": "ವಿಚಾರ ಸಂಕಿರಣ" },
-    { "image": "youth dailogues.png", "caption_kn": "ಯುವ ಸಂವಾದ" },
-    { "image": "community.png", "caption_kn": "ಸಾಮಾಜಿಕ ಕಾರ್ಯಕ್ರಮ" },
-    { "image": "culture.png", "caption_kn": "ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮ" }
+    { "image": "uploads/seminars.png", "caption_kn": "ವಿಚಾರ ಸಂಕಿರಣ" },
+    { "image": "uploads/youth dailogues.png", "caption_kn": "ಯುವ ಸಂವಾದ" },
+    { "image": "uploads/community.png", "caption_kn": "ಸಾಮಾಜಿಕ ಕಾರ್ಯಕ್ರಮ" },
+    { "image": "uploads/culture.png", "caption_kn": "ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮ" }
   ]
 }
