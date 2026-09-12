@@ -969,6 +969,195 @@
         color: #7c88a6;
       }
 
+      /* ---------- Footer (premium) ---------- */
+      footer.site {
+        background: var(--navy-dark);
+        color: #aebbd8;
+        padding: 0;
+        position: relative;
+      }
+      footer.site::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--saffron) 0 33%,
+          var(--white) 33% 66%,
+          var(--green) 66% 100%
+        );
+      }
+      .footer-main {
+        padding: 56px 0 32px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+        gap: 40px;
+      }
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .footer-brand .mark-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .footer-brand .mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Merriweather", serif;
+        font-weight: 900;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .footer-brand .kn-name {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        font-family: "Noto Sans Kannada", serif;
+      }
+      .footer-brand .en-name {
+        color: #ffcf7d;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+      .footer-brand p {
+        font-size: 0.85rem;
+        color: #9fb0d4;
+        line-height: 1.7;
+        max-width: 34ch;
+        margin: 0;
+      }
+      .footer-brand .quote {
+        font-style: italic;
+        color: #ffd9ad;
+        font-size: 0.85rem;
+        border-left: 2px solid var(--saffron);
+        padding-left: 12px;
+        margin: 4px 0 0;
+      }
+
+      .footer-col h4 {
+        color: #fff;
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 0 0 18px;
+        position: relative;
+      }
+      .footer-col h4::after {
+        content: "";
+        display: block;
+        width: 26px;
+        height: 2px;
+        background: var(--saffron);
+        margin-top: 10px;
+      }
+      .footer-col ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+      .footer-col a {
+        font-size: 0.87rem;
+        color: #aebbd8;
+        transition: color 0.15s ease, padding-left 0.15s ease;
+      }
+      .footer-col a:hover {
+        color: #ffcf7d;
+        padding-left: 3px;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.78rem;
+        color: #cfd9ec;
+        transition: background 0.15s ease, border-color 0.15s ease,
+          transform 0.15s ease;
+      }
+      .footer-social a:hover {
+        background: var(--saffron);
+        border-color: var(--saffron);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+      }
+      .footer-bottom .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .footer-bottom .copy {
+        font-size: 0.78rem;
+        color: #7c88a6;
+      }
+      .footer-bottom .credit {
+        font-size: 0.78rem;
+        color: #7c88a6;
+      }
+      .footer-bottom .credit a {
+        color: #c9d4ec;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(201, 212, 236, 0.35);
+        transition: color 0.15s ease, border-color 0.15s ease;
+      }
+      .footer-bottom .credit a:hover {
+        color: #ffcf7d;
+        border-color: #ffcf7d;
+      }
+
+      @media (max-width: 900px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          row-gap: 36px;
+        }
+        .footer-bottom .wrap {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+      @media (max-width: 600px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 960px) {
         nav.main {
           position: absolute;
@@ -1522,42 +1711,84 @@
     </section>
 
     <footer class="site">
-      <div class="wrap">
-        <div class="foot-inner">
-          <div>
-            <div class="kn" style="color: #fff; font-weight: 700">
-              ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ &mdash; NEHARU VICHAR VEDIKE
+      <div class="footer-main">
+        <div class="wrap">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="mark-row">
+                <div class="mark">ನೆ</div>
+                <div>
+                  <div class="kn-name">ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ</div>
+                  <div class="en-name">NEHARU VICHAR VEDIKE</div>
+                </div>
+              </div>
+              <p>
+                A platform for ideas, knowledge, democracy, equality and
+                scientific temper — encouraging youth participation and
+                constructive public dialogue.
+              </p>
+              <p class="quote kn">"ವಿಚಾರದಿಂದ ಬೆಳಕು — ಬೆಳಕಿನಿಂದ ಬದಲಾವಣೆ."</p>
+              <div class="footer-social" aria-hidden="true">
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="YouTube">YT</a>
+                <a href="#" aria-label="X / Twitter">X</a>
+              </div>
             </div>
-            <div class="tagline kn">"ವಿಚಾರದಿಂದ ಬೆಳಕು — ಬೆಳಕಿನಿಂದ ಬದಲಾವಣೆ."</div>
+
+            <div class="footer-col">
+              <h4>Explore</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#mission">Our Mission</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#youth">Youth</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h4>Connect</h4>
+              <ul>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#posts">Posts &amp; News</a></li>
+                <li><a href="#join">Join Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <ul>
+                <li id="footer-phone">+91 XXXXXXXXXX</li>
+                <li>
+                  <a id="footer-email" href="mailto:info@neharuvicharvedike.org"
+                    >info@neharuvicharvedike.org</a
+                  >
+                </li>
+                <li id="footer-address">Vijayanagar, Bengaluru, Karnataka</li>
+              </ul>
+            </div>
           </div>
-          <nav>
-            <a href="#home">Home</a><a href="#about">About</a
-            ><a href="#mission">Mission</a><a href="#activities">Activities</a
-            ><a href="#events">Events</a><a href="#gallery">Gallery</a
-            ><a href="#join">Join Us</a><a href="#contact">Contact</a>
-          </nav>
         </div>
-        <p class="fine">
-          &copy; 2026 Neharu Vichar Vedike. All Rights Reserved. &mdash; Static
-          site, hosted with no backend.
-          <span style="opacity: 0.45; margin: 0 8px">|</span>
-          <span style="opacity: 0.75"
+      </div>
+
+      <div class="footer-bottom">
+        <div class="wrap">
+          <span class="copy"
+            >&copy; 2026 Neharu Vichar Vedike. All Rights Reserved.</span
+          >
+          <span class="credit"
             >Developed by
             <a
               href="https://www.veereshbashetti.com/"
               target="_blank"
               rel="noopener"
-              style="
-                color: #9fb0d4;
-                font-weight: 600;
-                text-decoration: none;
-                border-bottom: 1px solid rgba(159, 176, 212, 0.4);
-                transition: opacity 0.15s;
-              "
               >Veeresh Bashetti</a
-            >
-          </span>
-        </p>
+            ></span
+          >
+        </div>
       </div>
     </footer>
 
@@ -1587,18 +1818,28 @@
           });
       }
 
-      // Contact
+      // Contact (also fills footer copies)
       loadJSON("/site-info.json").then(function (data) {
         if (!data) return;
-        var p = document.getElementById("contact-phone");
-        var e = document.getElementById("contact-email");
-        var a = document.getElementById("contact-address");
+        var ids = ["contact-phone", "footer-phone"];
+        var p = document.getElementById("contact-phone"),
+          fp = document.getElementById("footer-phone");
+        var e = document.getElementById("contact-email"),
+          fe = document.getElementById("footer-email");
+        var a = document.getElementById("contact-address"),
+          fa = document.getElementById("footer-address");
         if (p && data.phone) p.textContent = data.phone;
+        if (fp && data.phone) fp.textContent = data.phone;
         if (e && data.email) {
           e.textContent = data.email;
           e.href = "mailto:" + data.email;
         }
+        if (fe && data.email) {
+          fe.textContent = data.email;
+          fe.href = "mailto:" + data.email;
+        }
         if (a && data.address) a.textContent = data.address;
+        if (fa && data.address) fa.textContent = data.address;
       });
 
       // Hero
