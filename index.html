@@ -574,5 +574,24 @@
   });
 })();
 </script>
+
+  <script>
+(function(){
+  fetch('/site-info.json')
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      var phoneEl = document.getElementById('contact-phone');
+      var emailEl = document.getElementById('contact-email');
+      var addressEl = document.getElementById('contact-address');
+      if (phoneEl && data.phone) phoneEl.textContent = data.phone;
+      if (emailEl && data.email) {
+        emailEl.textContent = data.email;
+        emailEl.href = 'mailto:' + data.email;
+      }
+      if (addressEl && data.address) addressEl.textContent = data.address;
+    })
+    .catch(function(err){ console.error('Could not load site info:', err); });
+})();
+</script>
 </body>
 </html>
