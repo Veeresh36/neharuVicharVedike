@@ -4,29 +4,10 @@
   <meta charset="utf-8" />
   <title>Neharu Vichar Vedike — Content Manager</title>
   <meta name="robots" content="noindex" />
-  <!-- Force the exact config path so it works even without a trailing slash on /admin -->
   <link href="/admin/config.yml" rel="cms-config-url" />
 </head>
 <body>
-  <!-- Netlify Identity: gives a plain email + password login, no GitHub mention -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      // IMPORTANT: replace YOUR-NETLIFY-SITE with your actual Netlify project domain
-      window.netlifyIdentity.init({
-        APIUrl: "https://shimmering-sherbet-63c618.netlify.app/.netlify/identity"
-      });
-      window.netlifyIdentity.on("init", (user) => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
-
-  <!-- Decap CMS (formerly Netlify CMS) — Git Gateway backend, plain email/password login -->
+  <!-- Decap CMS — GitHub backend, login via "Login with GitHub" button -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
