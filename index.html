@@ -1537,9 +1537,12 @@
             ><a href="#join">Join Us</a><a href="#contact">Contact</a>
           </nav>
         </div>
-        <p class="fine">
+                <p class="fine">
           &copy; 2026 Neharu Vichar Vedike. All Rights Reserved. &mdash; Static
           site, hosted with no backend.
+        </p>
+        <p class="fine" style="margin-top: 6px;">
+          Developed by <a href="https://www.veereshbashetti.com/" target="_blank" rel="noopener" style="color: #ffd9ad; text-decoration: underline;">Veeresh Bashetti</a>
         </p>
       </div>
     </footer>
@@ -1680,7 +1683,7 @@
           })
           .join("");
       });
-      
+
       // Gallery (with "Show More" pagination, 6 at a time)
       loadJSON("/gallery.json").then(function (d) {
         if (!d || !d.items) return;
