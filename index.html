@@ -650,6 +650,62 @@
         margin: 0 0 8px;
       }
 
+      /* ---------- Middle Image ---------- */
+      .middle-image-section {
+        padding: 0;
+        background: var(--cream);
+        width: 100%;
+      }
+
+      .middle-image-section .wrap {
+        max-width: none;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .middle-image-frame {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        background: var(--white);
+        box-shadow: none;
+      }
+
+      .middle-image-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border: 3px solid rgba(224, 122, 43, 0.12);
+        border-radius: inherit;
+        z-index: 1;
+      }
+
+      .middle-image-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: cover;
+      }
+
+      @media (max-width: 600px) {
+        .middle-image-section {
+          padding: 24px 0;
+        }
+
+        .middle-image-frame {
+          border-radius: 0;
+        }
+
+        .middle-image-frame img {
+          max-height: none;
+        }
+      }
+
       /* ---------- Mission ---------- */
       .mission-list {
         display: grid;
@@ -1835,6 +1891,20 @@
           justice, scientific thinking, democratic participation and responsible
           citizenship.
         </p>
+      </div>
+    </section>
+
+    <!-- ---------- Middle Image ---------- -->
+    <section class="middle-image-section" aria-label="Neharu Vichar Vedike">
+      <div class="wrap">
+        <div class="middle-image-frame">
+          <img
+            src="uploads/img_middle.png"
+            alt="ನೆಹರು ವಿಚಾರ ವೇದಿಕೆ, ಮಂಗಳೂರು"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
     </section>
 
